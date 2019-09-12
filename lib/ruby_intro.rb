@@ -53,7 +53,9 @@ def starts_with_consonant? s
   puts s.chr 
   puts s.chr.capitalize
   puts "-----------------"
-  if s.chr.capitalize.match(/([^A-Z])[AEIOU]/) 
+  if s.empty?
+    return false
+  elsif s.chr.capitalize.match(/[[^A-Z]AEIOU]/) 
     # Issue is with the regex (how to create a union)
     return false 
   else  
@@ -67,9 +69,10 @@ def binary_multiple_of_4? s
   # r = s.unpack("B*").first.to_i(2)
   puts s
   puts s.to_i(2)
+  if s.empty?
+    bool = false
   puts "-----------"
-  s = ""
-  if s.match(/[^01]/)
+  elsif s.match(/[^01]/)
     bool = false
   elsif s.to_i(2) % 4 == 0
     bool = true
